@@ -1,17 +1,23 @@
 package com.example.api1;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationMenu;
+import com.google.android.material.bottomnavigation.BottomNavigationMenuView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -36,13 +42,14 @@ import java.util.List;
 import com.example.api1.Api.*;
 import com.example.api1.linkAdapter;
 
-public class MainActivity extends YouTubeBaseActivity{
+public class MainActivity extends YouTubeBaseActivity {
 
     public static RecyclerView recycler;
     public static YouTubePlayerView youTubePlayerView;
     public static YouTubePlayer thisyouTubePlayer;
     SearchView searchView;
     Context context;
+    BottomNavigationView bottomNav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +57,7 @@ public class MainActivity extends YouTubeBaseActivity{
         setContentView(R.layout.activity_main);
         recycler = findViewById(R.id.recycler);
         youTubePlayerView = findViewById(R.id.youtubePlayerView);
+        bottomNav = findViewById(R.id.bottomNav);
         assert recycler != null;
         recycler.setLayoutManager(new LinearLayoutManager(this));
         searchView = findViewById(R.id.searchView);
@@ -72,6 +80,43 @@ public class MainActivity extends YouTubeBaseActivity{
                 return false;
             }
         });
+
+        /*bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+                switch(menuItem.getItemId()){
+                    case R.id.videosNav:
+                        break;
+                    case R.id.favoritesNav:
+                        Intent intent = new Intent(context, Favorites.class);
+                        startActivity(intent);
+                        break;
+                }
+                return false;
+            }
+        });*/
+        bottomNavSelect(bottomNav, context);
+
+    }
+
+    public void bottomNavSelect(BottomNavigationView view, final Context context){
+        view.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+                switch(menuItem.getItemId()){
+                    case R.id.videosNav:
+                        break;
+                    case R.id.favoritesNav:
+                        Intent favoriteIntent = new Intent(context, Favorites.class);
+                        startActivity(favoriteIntent);
+                        break;
+                }
+                return false;
+            }
+        });
+
     }
 
     public static void playVideo(final String videoId, YouTubePlayerView youTubePlayerView) {

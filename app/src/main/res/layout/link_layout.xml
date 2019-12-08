@@ -8,11 +8,16 @@
     tools:ignore="UseCompoundDrawables">
 
     <LinearLayout
-        android:layout_width="400dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginBottom="15dp"
+        android:background="#FFFFFF"
         android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         tools:ignore="UselessParent">
 
         <ImageView
@@ -32,7 +37,8 @@
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="100dp"
             android:singleLine="false"
-            android:text="@string/textview" />
+            android:text="@string/textview"
+            android:textColor="#2E2E2E" />
     </LinearLayout>
 
 </LinearLayout>

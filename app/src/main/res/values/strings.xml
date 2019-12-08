@@ -2,4 +2,8 @@
     <string name="app_name">api1</string>
     <string name="textview" />
     <string name="thumbnail" />
+    <string name="videos">Videos</string>
+    <string name="favorites">Favorites</string>
+    <string name="title_activity_favorites">Favorites</string>
+    <string name="favtxt">Favorites</string>
 </resources>
