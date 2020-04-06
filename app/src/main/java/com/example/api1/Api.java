@@ -34,7 +34,7 @@ public class Api {
 
     public static synchronized void CallApi(final Context context, final String query){
         queue = Volley.newRequestQueue(context);
-        String url ="https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + query + "backingtrack&type=video&maxResults=50&key=AIzaSyAmSTX1ZlgOGuscAqM53YbqHpiJ4jgLujE";
+        String url ="https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + query + "backingtrack&type=video&maxResults=50&key=";
 
 
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
